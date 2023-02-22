@@ -127,13 +127,10 @@ video {
 }
 
 /* Navbar */
-.menuImg,
+
 .homeImg,
-.addImg,
-.folderImg,
-.todayImg,
-.inboxImg,
-.weekImg {
+.menuImg,
+.addImg {
   filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
     brightness(89%) contrast(93%);
   width: 1.2rem;
@@ -155,6 +152,19 @@ video {
 }
 
 /* Sidebar */
+.sideIcon {
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(89%) contrast(93%);
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
 .sidebar {
   grid-row: 2/3;
   grid-column: 1/2;
@@ -181,6 +191,12 @@ li {
 .contentTitle {
   font-family: "RobotoReg";
   font-size: 1.5em;
+}
+
+.contentTxt {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }
 
 /* Footer */
