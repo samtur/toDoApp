@@ -7,13 +7,10 @@
     <script defer src="main.js"></script>
   </head>
   <body>
-    <div id="bodyContent"></div>
-  </body>
-</html>
-
-<!-- <div class="navbar">
+    <div id="bodyContent">
+      <div class="navbar">
         <div class="menuBtn">
-          <img src="../src/menubtn.svg" class="menuImg" />
+          <img src="../src/menu.svg" class="menuImg" />
         </div>
         <div class="homeBtn">
           <img src="../src/home.svg" class="homeImg" />
@@ -22,17 +19,45 @@
 
       <div class="sidebar">
         <ul class="linklist">
-          <li id="link0" class="links"><img src="../src/inbox.svg" class="sideIcon" /> Inbox</li>
-          <li id="link1" class="links"><img src="../src/today.svg" class="sideIcon" /> Today</li>
-          <li id="link2" class="links"><img src="../src/week.svg" class="sideIcon" /> This Week</li>
-          <li id="link3" class="links"><img src="../src/folder.svg" class="sideIcon" /> Projects</li>
-          <li id="link4" class="links"><img src="../src/add.svg" class="sideIcon" />Add Project</li>
+          <li id="link0" class="links">
+            <img src="../src/inbox.svg" class="sideIcon" /> Inbox
+          </li>
+          <li id="link1" class="links">
+            <img src="../src/today.svg" class="sideIcon" /> Today
+          </li>
+          <li id="link2" class="links">
+            <img src="../src/week.svg" class="sideIcon" /> This Week
+          </li>
+          <li id="link3" class="links">
+            <img src="../src/folder.svg" class="sideIcon" /> Projects
+          </li>
+          <li id="link4" class="links">
+            <img src="../src/add.svg" class="sideIcon" />Add Project
+          </li>
         </ul>
       </div>
 
       <div class="content">
         <h1 class="contentTitle">Inbox</h1>
-        <div class="contentTxt"><img src="../src/add.svg" class="addImg" />Add Task</div>
+        <div class="toDoformContainer">
+          <form
+            action="../src/functions.js"
+            method="post"
+            autocomplete="off"
+            class="toDoform"
+          >
+            <input type="text" class="toDoInfo" />
+            <input type="date" class="dateTimeInfo" />
+            <button type="submit" class="submitTaskBtn">Add Task</button>
+            <button type="reset" class="cancelBtn">Cancel</button>
+          </form>
+        </div>
+        <div class="contentTxt">
+          <img src="../src/add.svg" class="addImg" />Add Task
+        </div>
       </div>
 
-      <div class="footer">Developed by Sam Turland</div> -->
+      <div class="footer">Developed by Sam Turland</div>
+    </div>
+  </body>
+</html>
