@@ -1,6 +1,8 @@
 import "./style.css";
 import { domFunc } from "./dom";
-import { appFunc } from "./functions";
+import { appFunc } from "./app";
+import { taskData } from "./taskData";
 
-domFunc();
+// domFunc();
 appFunc();
+taskData();
