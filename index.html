@@ -39,15 +39,16 @@
 
       <div class="content">
         <h1 class="contentTitle">Inbox</h1>
-        <div class="toDoformContainer">
+        <div class="hidden taskFormContainer">
           <form
-            action="../src/functions.js"
+            action="../src/index.js"
             method="post"
             autocomplete="off"
-            class="toDoform"
+            class="taskForm"
           >
-            <input type="text" class="toDoInfo" />
-            <input type="date" class="dateTimeInfo" />
+            <input type="text" class="taskName" name="taskName" />
+            <input type="text" class="taskNote" name="taskNote" />
+            <input type="date" class="taskDate" name="taskDate" />
             <button type="submit" class="submitTaskBtn">Add Task</button>
             <button type="reset" class="cancelBtn">Cancel</button>
           </form>
