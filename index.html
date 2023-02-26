@@ -39,6 +39,21 @@
 
       <div class="content">
         <h1 class="contentTitle">Inbox</h1>
+        <div>
+          <div class="taskHeadings">
+            <h1 class="doneHead">Done</h1>
+            <h1 class="nameHead">Task</h1>
+            <h1 class="noteHead">Notes</h1>
+            <h1 class="dateHead">Complete By</h1>
+          </div>
+          <div class="taskTable">
+            <input class="taskCheck" type="checkbox" />
+            <div class="taskNameDisplay">Walk the Dog</div>
+            <div class="taskNoteDisplay">Complete Tomorrow</div>
+            <div class="taskDateDisplay">23/07/1991</div>
+          </div>
+        </div>
+
         <div class="hidden taskFormContainer">
           <form
             action="../src/index.js"
@@ -46,26 +61,34 @@
             autocomplete="off"
             class="taskForm"
           >
-            <input
-              type="text"
-              class="taskName"
-              name="taskName"
-              placeholder="Enter Task Name"
-            />
-            <input
-              type="text"
-              class="taskNote"
-              name="taskNote"
-              placeholder="Enter Task Note"
-            />
-            <input type="date" class="taskDate" name="taskDate" />
-            <button type="submit" class="submitTaskBtn">Add Task</button>
-            <button type="reset" class="cancelBtn">Cancel</button>
+            <div class="taskInputs">
+              <input
+                type="text"
+                class="taskName"
+                name="taskName"
+                placeholder="Enter Task Name"
+              />
+              <input
+                type="text"
+                class="taskNote"
+                name="taskNote"
+                placeholder="Enter Task Note"
+              />
+              <input type="date" class="taskDate" name="taskDate" />
+            </div>
+            <div class="taskBtns">
+              <button type="submit" class="submitBtn">
+                <img src="../src/add.svg" class="addImg" />Add Task
+              </button>
+              <button type="button" class="closeBtn">
+                <img src="../src/close.svg" class="closeImg" /> Cancel
+              </button>
+            </div>
           </form>
         </div>
-        <div class="contentTxt">
+        <button class="openForm">
           <img src="../src/add.svg" class="addImg" />Add Task
-        </div>
+        </button>
       </div>
 
       <div class="footer">Developed by Sam Turland</div>
