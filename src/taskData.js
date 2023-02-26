@@ -1,5 +1,7 @@
+import { displayTask } from "./dom";
+
 const taskData = () => {
-  const submit = document.querySelector(".submitTaskBtn");
+  const submit = document.querySelector(".submitBtn");
   const taskName = document.querySelector(".taskName");
   const taskNote = document.querySelector(".taskNote");
   const taskDate = document.querySelector(".taskDate");
@@ -10,6 +12,7 @@ const taskData = () => {
     this.taskName = taskName;
     this.taskNote = taskNote;
     this.taskDate = taskDate;
+    this.add = false;
   }
 
   submit.addEventListener("click", function (e) {
@@ -18,12 +21,12 @@ const taskData = () => {
     let taskNoteValue = taskNote.value;
     let taskDateValue = taskDate.value;
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
+    displayTask(taskList);
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
     let toDo = new Task(taskNameValue, taskNoteValue, taskDateValue);
     taskList.push(toDo);
-    console.log(taskList);
   }
 };
 

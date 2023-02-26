@@ -1,9 +1,17 @@
 const appFunc = () => {
-  const addbtn = document.querySelector(".contentTxt");
-  addbtn.addEventListener("click", function () {
-    const formContainer = document.querySelector(".taskFormContainer");
-    addbtn.classList.add("hidden");
+  const addBtn = document.querySelector(".openForm");
+  const closeBtn = document.querySelector(".closeBtn");
+  const formContainer = document.querySelector(".taskFormContainer");
+  const submitBtn = document.querySelector(".submitBtn");
+
+  addBtn.addEventListener("click", function () {
+    addBtn.classList.add("hidden");
     formContainer.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", function () {
+    addBtn.classList.remove("hidden");
+    formContainer.classList.add("hidden");
   });
 };
 

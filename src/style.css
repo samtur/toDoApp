@@ -130,7 +130,8 @@ video {
 
 .homeImg,
 .menuImg,
-.addImg {
+.addImg,
+.closeImg {
   filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
     brightness(89%) contrast(93%);
   width: 1.2rem;
@@ -166,6 +167,7 @@ video {
 }
 
 .links {
+  font-family: "RobotoReg";
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -187,6 +189,47 @@ li {
 }
 
 /* Content */
+
+.taskContainer {
+  display: grid;
+  grid-template-rows: 1fr;
+  font-size: 1.2rem;
+}
+
+.taskHeadings {
+  font-family: "RobotoReg";
+  grid-row: 1/2;
+  border: solid 1px var(--lightest);
+  display: grid;
+  grid-template-columns: 10% 30% 40% 20%;
+}
+
+.doneHead,
+.nameHead,
+.noteHead,
+.taskNameDisplay,
+.taskNoteDisplay {
+  border-right: 1px solid var(--lightest);
+  padding: 0.3rem 0.5rem;
+}
+
+.taskNameDisplay {
+  border-left: 1px solid var(--lightest);
+}
+
+.dateHead,
+.taskCheck,
+.taskDateDisplay {
+  padding: 0.3rem 0.5rem;
+}
+
+.taskTable {
+  border: solid 1px var(--lightest);
+  display: grid;
+  grid-template-columns: 10% 30% 40% 20%;
+  border-top: none;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -203,11 +246,24 @@ li {
   font-size: 1.5em;
 }
 
-.contentTxt {
+.taskForm {
+  padding: 0.5rem 0rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.taskInputs {
+  grid-row: 1/2;
   display: flex;
   gap: 0.5rem;
-  flex-direction: row;
-  justify-content: flex-start;
+}
+
+.taskBtns {
+  grid-row: 2/3;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .taskName,
@@ -221,6 +277,27 @@ li {
   height: 2rem;
 }
 
+.openForm,
+.submitBtn,
+.closeBtn {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--lightest);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem 0.3rem 0.2rem;
+  width: 8rem;
+  border: solid 1px var(--lightest);
+}
+
+.doneBtn {
+  border: none;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(81%) sepia(16%) saturate(306%) hue-rotate(340deg)
     brightness(109%) contrast(73%);
@@ -231,14 +308,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   color: var(--lightest);
 }
 
-.taskForm {
-  padding: 0.5rem 0rem;
-}
-
 ::placeholder {
   color: var(--lightest);
   font-size: 1.2rem;
 }
+
 /* Footer */
 .footer {
   font-family: "RobotoThin";
