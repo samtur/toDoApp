@@ -159,17 +159,24 @@ video {
   height: 1.2rem;
 }
 
+.linklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .links {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  flex-direction: row;
+  gap: 0.5rem;
+  justify-content: flex-start;
 }
 
 .sidebar {
   grid-row: 2/3;
   grid-column: 1/2;
   background-color: var(--darkest);
-  font-size: 1.2em;
+  font-size: 1.2rem;
   padding: 1rem;
 }
 
@@ -181,6 +188,9 @@ li {
 
 /* Content */
 .content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   font-size: 1.2em;
   grid-row: 2/3;
   grid-column: 2/3;
@@ -195,10 +205,40 @@ li {
 
 .contentTxt {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
+.taskName,
+.taskNote,
+.taskDate {
+  font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
+  color: var(--lightest);
+  background-color: var(--darkest);
+  border: solid 1px var(--lightest);
+  height: 2rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(81%) sepia(16%) saturate(306%) hue-rotate(340deg)
+    brightness(109%) contrast(73%);
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+  color: var(--lightest);
+}
+
+.taskForm {
+  padding: 0.5rem 0rem;
+}
+
+::placeholder {
+  color: var(--lightest);
+  font-size: 1.2rem;
+}
 /* Footer */
 .footer {
   font-family: "RobotoThin";
