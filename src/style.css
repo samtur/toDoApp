@@ -124,8 +124,59 @@ video {
   height: 100vh;
   grid-template-columns: 0.17fr 0.9fr;
   grid-template-rows: 0.1fr 0.9fr 0.05fr;
+  background-color: var(--darkest);
 }
 
+/* Breakpoints */
+@media only screen and (max-width: 1000px) {
+  #bodyContent {
+    overflow: scroll;
+  }
+
+  .content {
+    min-width: 852px;
+  }
+
+  .sidebar {
+    min-width: 159px;
+  }
+}
+
+/* Check Box Styling */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--darkest);
+  margin: 0;
+  font: inherit;
+  color: var(--lightest);
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 1px solid var(--lightest);
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--lightest);
+  background-color: var(--darkest);
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  border: solid 2px var(--lightest);
+}
 /* Navbar */
 
 .homeImg,
@@ -201,24 +252,21 @@ li {
   grid-row: 1/2;
   border: solid 1px var(--lightest);
   display: grid;
-  grid-template-columns: 10% 30% 40% 20%;
+  grid-template-columns: 7.5% 32.5% 40% 20%;
 }
 
 .doneHead,
 .nameHead,
 .noteHead,
+.checkLabel,
 .taskNameDisplay,
 .taskNoteDisplay {
   border-right: 1px solid var(--lightest);
   padding: 0.3rem 0.5rem;
 }
 
-.taskNameDisplay {
-  border-left: 1px solid var(--lightest);
-}
-
 .dateHead,
-.taskCheck,
+.checkBox,
 .taskDateDisplay {
   padding: 0.3rem 0.5rem;
 }
@@ -226,7 +274,7 @@ li {
 .taskTable {
   border: solid 1px var(--lightest);
   display: grid;
-  grid-template-columns: 10% 30% 40% 20%;
+  grid-template-columns: 7.5% 32.5% 40% 20%;
   border-top: none;
 }
 
@@ -294,8 +342,15 @@ li {
   border: solid 1px var(--lightest);
 }
 
-.doneBtn {
-  border: none;
+.checkLabel {
+  font-family: "RobotoThin";
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: 1em auto;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
