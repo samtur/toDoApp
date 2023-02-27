@@ -120,7 +120,7 @@ video {
 
 #bodyContent {
   display: grid;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   grid-template-columns: 0.17fr 0.9fr;
   grid-template-rows: 0.1fr 0.9fr 0.05fr;
@@ -177,6 +177,11 @@ input[type="checkbox"]:checked::before {
 input[type="checkbox"]:focus {
   border: solid 2px var(--lightest);
 }
+
+input[type="checkbox"]:hover {
+  cursor: pointer;
+}
+
 /* Navbar */
 
 .homeImg,
@@ -187,6 +192,7 @@ input[type="checkbox"]:focus {
     brightness(89%) contrast(93%);
   width: 1.2rem;
   height: 1.2rem;
+  cursor: pointer;
 }
 
 .navbar {
@@ -287,6 +293,10 @@ li {
   grid-column: 2/3;
   background-color: var(--darkest);
   padding: 1rem;
+}
+
+.contentWide {
+  grid-column: 1/3;
 }
 
 .contentTitle {

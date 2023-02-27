@@ -12,14 +12,21 @@ const taskData = () => {
     this.taskName = taskName;
     this.taskNote = taskNote;
     this.taskDate = taskDate;
+    this.done = false;
     this.add = false;
   }
 
   submit.addEventListener("click", function (e) {
     e.preventDefault();
+    if (taskName.value === "" || taskDate.value === "") {
+      return;
+    }
     let taskNameValue = taskName.value;
     let taskNoteValue = taskNote.value;
     let taskDateValue = taskDate.value;
+    taskName.value = "";
+    taskNote.value = "";
+    taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
     displayTask(taskList);
   });
