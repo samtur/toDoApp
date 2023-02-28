@@ -258,29 +258,30 @@ li {
   grid-row: 1/2;
   border: solid 1px var(--lightest);
   display: grid;
-  grid-template-columns: 7.5% 32.5% 40% 20%;
+  grid-template-columns: 7.5% 30% 35% 20% 7.5%;
 }
 
 .doneHead,
 .nameHead,
 .noteHead,
+.dateHead,
 .checkLabel,
 .taskNameDisplay,
-.taskNoteDisplay {
+.taskNoteDisplay,
+.taskDateDisplay {
   border-right: 1px solid var(--lightest);
   padding: 0.3rem 0.5rem;
 }
 
-.dateHead,
 .checkBox,
-.taskDateDisplay {
+.removeHead {
   padding: 0.3rem 0.5rem;
 }
 
 .taskTable {
   border: solid 1px var(--lightest);
   display: grid;
-  grid-template-columns: 7.5% 32.5% 40% 20%;
+  grid-template-columns: 7.5% 30% 35% 20% 7.5%;
   border-top: none;
 }
 
@@ -363,6 +364,20 @@ li {
   grid-template-columns: 1em auto;
 }
 
+.complete {
+  background-color: var(--lightest);
+  color: var(--darkest);
+  border-left: 1px solid var(--darkest);
+}
+
+.crossout {
+  text-decoration: line-through;
+}
+
+.thin {
+  font-family: "RobotoThin";
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(81%) sepia(16%) saturate(306%) hue-rotate(340deg)
     brightness(109%) contrast(73%);
@@ -376,6 +391,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 ::placeholder {
   color: var(--lightest);
   font-size: 1.2rem;
+}
+
+.removeBtn {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeIcon {
+  cursor: pointer;
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(89%) contrast(93%);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* Footer */
