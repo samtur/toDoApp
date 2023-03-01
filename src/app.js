@@ -31,6 +31,7 @@ const appFunc = () => {
 const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
   btn.addEventListener("click", function () {
     if (taskInd.done === false) {
+      console.log(taskInd);
       taskInd.done = true;
       nameDis.classList.add("crossout");
       nameDis.classList.add("thin");
@@ -60,4 +61,24 @@ const removeTask = (btn, taskInd, indNum, list) => {
   });
 };
 
-export { appFunc, checkOff, removeTask };
+const todayPageListener = (taskList) => {
+  const todayBtn = document.querySelector("#viewToday");
+  todayBtn.addEventListener("click", function () {
+    const currentDate = new Date().toJSON().slice(0, 10);
+    for (let i in taskList) {
+      if (taskList[i].sort === false) {
+        const taskDate = document.querySelector(`#taskDateDisplay${i}`);
+        if (taskDate.innerHTML !== currentDate) {
+          document.querySelector(`#checkLabel${i}`).remove();
+          document.querySelector(`#taskNameDisplay${i}`).remove();
+          document.querySelector(`#taskNoteDisplay${i}`).remove();
+          document.querySelector(`#taskDateDisplay${i}`).remove();
+          document.querySelector(`#removeBtn${i}`).remove();
+        }
+        taskList[i].sort = true;
+      }
+    }
+  });
+};
+
+export { appFunc, checkOff, removeTask, todayPageListener };

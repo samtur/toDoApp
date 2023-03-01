@@ -52,4 +52,5 @@ const displayTask = (taskList) => {
     taskList[i].add = true;
   }
 };
+
 export { displayTask };

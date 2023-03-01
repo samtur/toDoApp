@@ -1,4 +1,5 @@
 import { displayTask } from "./dom";
+import { todayPageListener } from "./app";
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -14,6 +15,7 @@ const taskData = () => {
     this.taskDate = taskDate;
     this.done = false;
     this.add = false;
+    this.sort = false;
   }
 
   submit.addEventListener("click", function (e) {
@@ -29,6 +31,7 @@ const taskData = () => {
     taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
     displayTask(taskList);
+    todayPageListener(taskList);
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
