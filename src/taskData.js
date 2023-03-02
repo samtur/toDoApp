@@ -1,5 +1,5 @@
 import { displayTask } from "./dom";
-import { todayPageListener } from "./app";
+import { todayListener, inboxListener, resetSort } from "./app";
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -31,7 +31,6 @@ const taskData = () => {
     taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
     displayTask(taskList);
-    todayPageListener(taskList);
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
@@ -40,4 +39,4 @@ const taskData = () => {
   }
 };
 
-export { taskData };
+export { taskData, taskList };
