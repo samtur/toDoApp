@@ -1,6 +1,3 @@
-import { displayTask } from "./dom";
-import { taskList } from "./taskData";
-
 const appFunc = () => {
   const addBtn = document.querySelector(".openForm");
   const closeBtn = document.querySelector(".closeBtn");
@@ -64,65 +61,4 @@ const removeTask = (btn, taskInd, indNum, list) => {
   });
 };
 
-const resetSort = (taskList) => {
-  for (let i in taskList) {
-    if (taskList[i].sort === true) {
-      taskList[i].sort = false;
-    }
-  }
-};
-
-const todayListener = (taskList) => {
-  const todayBtn = document.querySelector("#viewToday");
-  todayBtn.addEventListener("click", function () {
-    resetSort(taskList);
-    const currentDate = new Date().toJSON().slice(0, 10);
-    for (let i in taskList) {
-      if (taskList[i].sort === false) {
-        const taskDate = document.querySelector(`#taskDateDisplay${i}`);
-        if (taskDate.innerHTML !== currentDate) {
-          document.querySelector(`#checkLabel${i}`).remove();
-          document.querySelector(`#taskNameDisplay${i}`).remove();
-          document.querySelector(`#taskNoteDisplay${i}`).remove();
-          document.querySelector(`#taskDateDisplay${i}`).remove();
-          document.querySelector(`#removeBtn${i}`).remove();
-          taskList[i].add = false;
-        }
-        taskList[i].sort = true;
-      }
-    }
-  });
-};
-
-const inboxListener = (taskList) => {
-  const inboxBtn = document.querySelector("#viewInbox");
-  const homeBtn = document.querySelector(".homeBtn");
-  inboxBtn.addEventListener("click", function () {
-    console.log(taskList);
-    resetSort(taskList);
-    for (let i in taskList) {
-      if (taskList[i].sort === false) {
-        displayTask(taskList);
-      }
-      taskList[i].sort = true;
-    }
-  });
-  homeBtn.addEventListener("click", function () {
-    resetSort(taskList);
-    for (let i in taskList) {
-      if (taskList[i].sort === false) {
-        displayTask(taskList);
-      }
-      taskList[i].sort = true;
-    }
-  });
-};
-
-export {
-  appFunc,
-  checkOff,
-  removeTask,
-  todayListener,
-  inboxListener,
-  resetSort,
-};
+export { appFunc, checkOff, removeTask };
