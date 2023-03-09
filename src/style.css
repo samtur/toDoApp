@@ -122,23 +122,24 @@ video {
   display: grid;
   width: 100%;
   height: 100vh;
-  grid-template-columns: 0.17fr 0.9fr;
+  grid-template-columns: 0.13fr 0.9fr;
   grid-template-rows: 0.1fr 0.9fr 0.05fr;
   background-color: var(--darkest);
 }
 
 /* Breakpoints */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1275px) {
   #bodyContent {
+    box-sizing: border-box;
     overflow: scroll;
   }
 
   .content {
-    min-width: 852px;
+    min-width: 1114.95px;
   }
 
   .sidebar {
-    min-width: 159px;
+    min-width: 162.3px;
   }
 }
 
