@@ -1,4 +1,5 @@
 import { displayTask } from "./dom";
+import { isDone } from "./app";
 const taskList = [];
 
 const taskData = () => {
@@ -105,6 +106,30 @@ const weekListener = (taskList) => {
   });
 };
 
+const completeListener = (taskList) => {
+  const completeBtn = document.querySelector("#link3");
+  const openFormBtn = document.querySelector(".openForm");
+  const taskFormContainer = document.querySelector(".taskFormContainer");
+  completeBtn.addEventListener("click", function () {
+    openFormBtn.classList.add("hidden");
+    taskFormContainer.classList.add("hidden");
+    resetSort(taskList);
+    displayTask(taskList);
+    for (let i in taskList) {
+      if (taskList[i].done === false) {
+        document.querySelector(`#checkLabel${i}`).remove();
+        document.querySelector(`#taskNameDisplay${i}`).remove();
+        document.querySelector(`#taskNoteDisplay${i}`).remove();
+        document.querySelector(`#taskDateDisplay${i}`).remove();
+        document.querySelector(`#removeBtn${i}`).remove();
+        taskList[i].add = false;
+      }
+      taskList[i].sort = true;
+      isDone(taskList[i], i);
+    }
+  });
+};
+
 const inboxListener = (taskList) => {
   const inboxBtn = document.querySelector("#link0");
   const homeBtn = document.querySelector(".homeBtn");
@@ -131,5 +156,12 @@ const inboxListener = (taskList) => {
   });
 };
 
-export { taskData, todayListener, inboxListener, resetSort, weekListener };
+export {
+  taskData,
+  todayListener,
+  inboxListener,
+  resetSort,
+  weekListener,
+  completeListener,
+};
 export { taskList };

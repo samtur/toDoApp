@@ -31,7 +31,6 @@ const appFunc = () => {
 const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
   btn.addEventListener("click", function () {
     if (taskInd.done === false) {
-      console.log(taskInd);
       taskInd.done = true;
       nameDis.classList.add("crossout");
       nameDis.classList.add("thin");
@@ -45,6 +44,21 @@ const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
       dateDis.classList.remove("thin");
     }
   });
+};
+
+const isDone = (task, index) => {
+  if (task.done === true) {
+    const nameDis = document.querySelector(`#taskNameDisplay${index}`);
+    const noteDis = document.querySelector(`#taskNoteDisplay${index}`);
+    const dateDis = document.querySelector(`#taskDateDisplay${index}`);
+    const btn = document.querySelector(`#checkBox${index}`);
+    console.dir(btn);
+    btn.checked = true;
+    nameDis.classList.add("crossout");
+    nameDis.classList.add("thin");
+    noteDis.classList.add("thin");
+    dateDis.classList.add("thin");
+  }
 };
 
 const removeTask = (btn, taskInd, indNum, list) => {
@@ -61,4 +75,4 @@ const removeTask = (btn, taskInd, indNum, list) => {
   });
 };
 
-export { appFunc, checkOff, removeTask };
+export { appFunc, checkOff, removeTask, isDone };
