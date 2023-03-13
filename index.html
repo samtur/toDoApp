@@ -7,6 +7,7 @@
     <script defer src="main.js"></script>
   </head>
   <body>
+    <!-- NavBar -->
     <div id="bodyContent">
       <div class="navbar">
         <div class="menuBtn">
@@ -16,7 +17,7 @@
           <img src="../src/home.svg" class="homeImg" />
         </div>
       </div>
-
+      <!-- SideBar -->
       <div class="sidebar">
         <ul class="linklist">
           <li id="link0" class="links">
@@ -43,10 +44,10 @@
           </li>
         </ul>
       </div>
-
+      <!-- Task Display -->
       <div class="content">
         <h1 class="contentTitle">Inbox</h1>
-        <div>
+        <div class="tableContainer">
           <div class="taskHeadings">
             <h1 class="doneHead">Done</h1>
             <h1 class="nameHead">Task</h1>
@@ -67,6 +68,7 @@
           </div>
         </div>
 
+        <!-- Task Form -->
         <div class="hidden taskFormContainer">
           <form
             action="../src/index.js"
@@ -102,6 +104,40 @@
         <button class="openForm">
           <img src="../src/addTask.svg" class="addImg" />Add Task
         </button>
+
+        <!-- Project Form -->
+        <div class="hidden projectFormContainer">
+          <form
+            action="../src/index.js"
+            method="post"
+            autocomplete="off"
+            class="projectForm"
+          >
+            <div class="projectInputs">
+              <input
+                type="text"
+                class="projectName"
+                name="projectName"
+                placeholder="Enter Project Name"
+              />
+              <input
+                type="text"
+                class="projectNote"
+                name="projectNote"
+                placeholder="Enter Project Note"
+              />
+              <input type="date" class="projectDate" name="projectDate" />
+            </div>
+            <div class="projectBtns">
+              <button type="submit" class="submitProjectBtn">
+                <img src="../src/addTask.svg" class="addImg" />Add Project
+              </button>
+              <button type="button" class="closeProjectBtn">
+                <img src="../src/close.svg" class="closeImg" /> Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <div class="footer">Developed by Sam Turland</div>
