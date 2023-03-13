@@ -308,6 +308,7 @@ li {
   font-size: 1.5em;
 }
 
+/* TaskForm */
 .taskForm {
   padding: 0.5rem 0rem;
   display: grid;
@@ -379,6 +380,83 @@ li {
 
 .thin {
   font-family: "RobotoThin";
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(81%) sepia(16%) saturate(306%) hue-rotate(340deg)
+    brightness(109%) contrast(73%);
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+  color: var(--lightest);
+}
+
+::placeholder {
+  color: var(--lightest);
+  font-size: 1.2rem;
+}
+
+.removeBtn {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.removeIcon {
+  cursor: pointer;
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(89%) contrast(93%);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Project Form */
+.projectForm {
+  padding: 0.5rem 0rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.projectInputs {
+  grid-row: 1/2;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.projectBtns {
+  grid-row: 2/3;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.projectName,
+.projectNote,
+.projectDate {
+  font-size: 1.2rem;
+  padding: 0.3rem 0.5rem;
+  color: var(--lightest);
+  background-color: var(--darkest);
+  border: solid 1px var(--lightest);
+  height: 2rem;
+}
+
+.submitProjectBtn,
+.closeProjectBtn {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--lightest);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem 0.3rem 0.2rem;
+  width: 10rem;
+  border: solid 1px var(--lightest);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {

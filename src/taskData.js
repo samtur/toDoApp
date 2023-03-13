@@ -1,6 +1,8 @@
 import { displayTask } from "./dom";
 import { isDone } from "./app";
 const taskList = [];
+const tableContainer = document.querySelector(".tableContainer");
+const projectFormContainer = document.querySelector(".projectFormContainer");
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -51,6 +53,8 @@ const todayListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   todayBtn.addEventListener("click", function () {
+    projectFormContainer.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     taskFormContainer.classList.add("hidden");
     const currentDate = new Date().toJSON().slice(0, 10);
@@ -78,6 +82,8 @@ const weekListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   weekBtn.addEventListener("click", function () {
+    projectFormContainer.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     taskFormContainer.classList.add("hidden");
     const currentDate = new Date();
@@ -111,6 +117,8 @@ const completeListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   completeBtn.addEventListener("click", function () {
+    projectFormContainer.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     taskFormContainer.classList.add("hidden");
     resetSort(taskList);
@@ -135,6 +143,8 @@ const inboxListener = (taskList) => {
   const homeBtn = document.querySelector(".homeBtn");
   const openFormBtn = document.querySelector(".openForm");
   inboxBtn.addEventListener("click", function () {
+    projectFormContainer.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
     openFormBtn.classList.remove("hidden");
     resetSort(taskList);
     for (let i in taskList) {
@@ -145,6 +155,8 @@ const inboxListener = (taskList) => {
     }
   });
   homeBtn.addEventListener("click", function () {
+    projectFormContainer.classList.add("hidden");
+    tableContainer.classList.remove("hidden");
     openFormBtn.classList.remove("hidden");
     resetSort(taskList);
     for (let i in taskList) {
