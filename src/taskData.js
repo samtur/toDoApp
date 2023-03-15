@@ -3,6 +3,7 @@ import { isDone } from "./app";
 const taskList = [];
 const tableContainer = document.querySelector(".tableContainer");
 const projectFormContainer = document.querySelector(".projectFormContainer");
+const contentTitle = document.querySelector(".contentTitle");
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -17,6 +18,7 @@ const taskData = () => {
     this.done = false;
     this.add = false;
     this.sort = false;
+    this.project = contentTitle.innerHTML;
   }
 
   submit.addEventListener("click", function (e) {
@@ -53,6 +55,7 @@ const todayListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   todayBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "Today";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
@@ -82,6 +85,7 @@ const weekListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   weekBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "This Week";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
@@ -117,6 +121,7 @@ const completeListener = (taskList) => {
   const openFormBtn = document.querySelector(".openForm");
   const taskFormContainer = document.querySelector(".taskFormContainer");
   completeBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "Completed";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
@@ -143,9 +148,10 @@ const inboxListener = (taskList) => {
   const homeBtn = document.querySelector(".homeBtn");
   const openFormBtn = document.querySelector(".openForm");
   inboxBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "Inbox";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
-    openFormBtn.classList.remove("hidden");
+    openFormBtn.classList.add("hidden");
     resetSort(taskList);
     for (let i in taskList) {
       if (taskList[i].sort === false) {
@@ -155,9 +161,10 @@ const inboxListener = (taskList) => {
     }
   });
   homeBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "Inbox";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
-    openFormBtn.classList.remove("hidden");
+    openFormBtn.classList.add("hidden");
     resetSort(taskList);
     for (let i in taskList) {
       if (taskList[i].sort === false) {

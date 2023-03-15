@@ -1,3 +1,4 @@
+// App Functionality
 const appFunc = () => {
   const addBtn = document.querySelector(".openForm");
   const closeBtn = document.querySelector(".closeBtn");
@@ -27,7 +28,7 @@ const appFunc = () => {
     formContainer.classList.add("hidden");
   });
 };
-
+// Task Functionality
 const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
   btn.addEventListener("click", function () {
     if (taskInd.done === false) {

@@ -9,7 +9,7 @@ import {
   weekListener,
   completeListener,
 } from "./taskData";
-import { addProject } from "./projects";
+import { addProject, projects } from "./projects";
 
 // domFunc();
 resetSort(taskList);
@@ -20,3 +20,4 @@ completeListener(taskList);
 addProject();
 appFunc();
 taskData();
+projects();
