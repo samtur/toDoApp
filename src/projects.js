@@ -1,3 +1,5 @@
+import { projectTasks } from "./taskData";
+
 // Projects Array
 const projectList = [];
 // Query Selectors
@@ -11,6 +13,7 @@ const addProject = () => {
   const addProjectBtn = document.querySelector("#link5");
   addProjectBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "Add New Project";
+    document.querySelector(".taskFormContainer").classList.add("hidden");
     openForm.classList.add("hidden");
     tableContainer.classList.add("hidden");
     projectFormContainer.classList.remove("hidden");
@@ -98,6 +101,13 @@ const projectPage = (btn, project) => {
   btn.addEventListener("click", function () {
     document.querySelector(".contentTitle").innerHTML = project.projectName;
     document.querySelector(".openForm").classList.remove("hidden");
+    document.querySelector(".taskFormContainer").classList.add("hidden");
+    document.querySelector(".projectFormContainer").classList.add("hidden");
+    // Need to change this so it only shows project's tasks
+    // SORT THIS OUT MAYBE THIS NEEDS TO BE DECLARED IN TASKDATA
+    // POSSUBLY TWO EVENT LISTENERS
+    projectTasks();
+    document.querySelector(".tableContainer").classList.remove("hidden");
   });
 };
 

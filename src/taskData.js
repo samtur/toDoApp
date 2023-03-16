@@ -34,6 +34,7 @@ const taskData = () => {
     taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
     displayTask(taskList);
+    console.log(taskList);
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
@@ -175,6 +176,23 @@ const inboxListener = (taskList) => {
   });
 };
 
+const projectTasks = (taskList) => {
+  resetSort(taskList);
+  displayTask(taskList);
+  for (let i in taskList) {
+    if (taskList[i].project !== contentTitle.innerHTML) {
+      document.querySelector(`#checkLabel${i}`).remove();
+      document.querySelector(`#taskNameDisplay${i}`).remove();
+      document.querySelector(`#taskNoteDisplay${i}`).remove();
+      document.querySelector(`#taskDateDisplay${i}`).remove();
+      document.querySelector(`#removeBtn${i}`).remove();
+      taskList[i].add = false;
+    }
+    taskList[i].sort = true;
+    isDone(taskList[i], i);
+  }
+};
+
 export {
   taskData,
   todayListener,
@@ -182,5 +200,6 @@ export {
   resetSort,
   weekListener,
   completeListener,
+  projectTasks,
 };
 export { taskList };
