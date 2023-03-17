@@ -1,4 +1,6 @@
-import { projectTasks } from "./taskData";
+import { resetSort, isDone } from "./taskData";
+import { taskList } from "./taskData";
+import { displayTask } from "./dom";
 
 // Projects Array
 const projectList = [];
@@ -31,7 +33,7 @@ const displayProject = (projectList) => {
     projectSidebar.innerHTML = projectList[i].projectName;
     projectSideUl.appendChild(projectSidebar);
     projectList[i].add = true;
-    projectPage(projectSidebar, projectList[i]);
+    projectPage(projectSidebar, projectList[i], taskList);
   }
 };
 // Project Constructor, eventlistener for submit and pushing to project array
@@ -97,17 +99,27 @@ const projects = () => {
   }
 };
 // Project Link Functionality
-const projectPage = (btn, project) => {
+const projectPage = (btn, project, taskList) => {
   btn.addEventListener("click", function () {
     document.querySelector(".contentTitle").innerHTML = project.projectName;
     document.querySelector(".openForm").classList.remove("hidden");
     document.querySelector(".taskFormContainer").classList.add("hidden");
     document.querySelector(".projectFormContainer").classList.add("hidden");
-    // Need to change this so it only shows project's tasks
-    // SORT THIS OUT MAYBE THIS NEEDS TO BE DECLARED IN TASKDATA
-    // POSSUBLY TWO EVENT LISTENERS
-    projectTasks();
     document.querySelector(".tableContainer").classList.remove("hidden");
+    resetSort(taskList);
+    displayTask(taskList);
+    for (let i in taskList) {
+      if (taskList[i].project !== contentTitle.innerHTML) {
+        document.querySelector(`#checkLabel${i}`).remove();
+        document.querySelector(`#taskNameDisplay${i}`).remove();
+        document.querySelector(`#taskNoteDisplay${i}`).remove();
+        document.querySelector(`#taskDateDisplay${i}`).remove();
+        document.querySelector(`#removeBtn${i}`).remove();
+        taskList[i].add = false;
+      }
+      taskList[i].sort = true;
+      isDone(taskList[i], i);
+    }
   });
 };
 
