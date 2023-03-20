@@ -53,7 +53,6 @@ const isDone = (task, index) => {
     const noteDis = document.querySelector(`#taskNoteDisplay${index}`);
     const dateDis = document.querySelector(`#taskDateDisplay${index}`);
     const btn = document.querySelector(`#checkBox${index}`);
-    console.dir(btn);
     btn.checked = true;
     nameDis.classList.add("crossout");
     nameDis.classList.add("thin");

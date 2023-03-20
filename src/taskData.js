@@ -34,7 +34,17 @@ const taskData = () => {
     taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
     displayTask(taskList);
-    console.log(taskList);
+    for (let i in taskList) {
+      if (taskList[i].project !== contentTitle.innerHTML) {
+        document.querySelector(`#checkLabel${i}`).remove();
+        document.querySelector(`#taskNameDisplay${i}`).remove();
+        document.querySelector(`#taskNoteDisplay${i}`).remove();
+        document.querySelector(`#taskDateDisplay${i}`).remove();
+        document.querySelector(`#removeBtn${i}`).remove();
+        taskList[i].add = false;
+      }
+      taskList[i].sort = true;
+    }
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
@@ -65,6 +75,7 @@ const todayListener = (taskList) => {
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
+      isDone(taskList[i], i);
       if (taskList[i].sort === false) {
         const taskDate = document.querySelector(`#taskDateDisplay${i}`);
         if (taskDate.innerHTML !== currentDate) {
@@ -99,6 +110,7 @@ const weekListener = (taskList) => {
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
+      isDone(taskList[i], i);
       if (taskList[i].sort === false) {
         let taskDate = document.querySelector(`#taskDateDisplay${i}`);
         taskDate = taskDate.innerHTML;
@@ -130,6 +142,7 @@ const completeListener = (taskList) => {
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
+      isDone(taskList[i], i);
       if (taskList[i].done === false) {
         document.querySelector(`#checkLabel${i}`).remove();
         document.querySelector(`#taskNameDisplay${i}`).remove();
@@ -139,7 +152,6 @@ const completeListener = (taskList) => {
         taskList[i].add = false;
       }
       taskList[i].sort = true;
-      isDone(taskList[i], i);
     }
   });
 };
@@ -154,9 +166,10 @@ const inboxListener = (taskList) => {
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     resetSort(taskList);
+    displayTask(taskList);
     for (let i in taskList) {
+      isDone(taskList[i], i);
       if (taskList[i].sort === false) {
-        displayTask(taskList);
       }
       taskList[i].sort = true;
     }
@@ -167,33 +180,15 @@ const inboxListener = (taskList) => {
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     resetSort(taskList);
+    displayTask(taskList);
     for (let i in taskList) {
       if (taskList[i].sort === false) {
-        displayTask(taskList);
       }
+      isDone(taskList[i], i);
       taskList[i].sort = true;
     }
   });
 };
-
-// const projectTasks = (taskList, btn) => {
-//   btn.addEventListener("click", function () {
-//     resetSort(taskList);
-//     displayTask(taskList);
-//     for (let i in taskList) {
-//       if (taskList[i].project !== contentTitle.innerHTML) {
-//         document.querySelector(`#checkLabel${i}`).remove();
-//         document.querySelector(`#taskNameDisplay${i}`).remove();
-//         document.querySelector(`#taskNoteDisplay${i}`).remove();
-//         document.querySelector(`#taskDateDisplay${i}`).remove();
-//         document.querySelector(`#removeBtn${i}`).remove();
-//         taskList[i].add = false;
-//       }
-//       taskList[i].sort = true;
-//       isDone(taskList[i], i);
-//     }
-//   });
-// };
 
 export {
   taskData,

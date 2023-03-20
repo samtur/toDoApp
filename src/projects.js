@@ -1,6 +1,7 @@
-import { resetSort, isDone } from "./taskData";
+import { resetSort } from "./taskData";
 import { taskList } from "./taskData";
 import { displayTask } from "./dom";
+import { isDone } from "./taskData";
 
 // Projects Array
 const projectList = [];
@@ -95,7 +96,6 @@ const projects = () => {
     addToProjectArr(projectName, projectNote, projectDate);
     displayProject(projectList);
     contentTitle.innerHTML = projectName;
-    console.log(projectList);
   }
 };
 // Project Link Functionality
@@ -109,6 +109,7 @@ const projectPage = (btn, project, taskList) => {
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
+      isDone(taskList[i], i);
       if (taskList[i].project !== contentTitle.innerHTML) {
         document.querySelector(`#checkLabel${i}`).remove();
         document.querySelector(`#taskNameDisplay${i}`).remove();
@@ -118,7 +119,6 @@ const projectPage = (btn, project, taskList) => {
         taskList[i].add = false;
       }
       taskList[i].sort = true;
-      isDone(taskList[i], i);
     }
   });
 };
