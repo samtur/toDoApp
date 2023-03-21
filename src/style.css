@@ -459,6 +459,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border: solid 1px var(--lightest);
 }
 
+#link4:hover,
+#viewProjects:hover {
+  cursor: default;
+}
+
+.projectSide:hover {
+  cursor: pointer;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(81%) sepia(16%) saturate(306%) hue-rotate(340deg)
     brightness(109%) contrast(73%);

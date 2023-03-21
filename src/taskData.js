@@ -161,7 +161,7 @@ const inboxListener = (taskList) => {
   const homeBtn = document.querySelector(".homeBtn");
   const openFormBtn = document.querySelector(".openForm");
   inboxBtn.addEventListener("click", function () {
-    contentTitle.innerHTML = "Inbox";
+    contentTitle.innerHTML = "All Tasks";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
@@ -175,7 +175,7 @@ const inboxListener = (taskList) => {
     }
   });
   homeBtn.addEventListener("click", function () {
-    contentTitle.innerHTML = "Inbox";
+    contentTitle.innerHTML = "All Tasks";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
