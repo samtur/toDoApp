@@ -3,6 +3,12 @@ import { taskList } from "./taskData";
 import { displayTask } from "./dom";
 import { isDone } from "./taskData";
 
+const submitProjectBtn = document.querySelector(".submitProjectBtn");
+const closeProjectBtn = document.querySelector(".closeProjectBtn");
+const projectName = document.querySelector(".projectName");
+const projectNote = document.querySelector(".projectNote");
+const projectDate = document.querySelector(".projectDate");
+
 // Projects Array
 const projectList = [];
 // Query Selectors
@@ -23,7 +29,7 @@ const addProject = () => {
   });
 };
 // Display Project in Sidebar
-const displayProject = (projectList) => {
+const displayProject = (projectList, projectName, tasks) => {
   for (let i in projectList) {
     if (projectList[i].add === true) {
       continue;
@@ -35,16 +41,29 @@ const displayProject = (projectList) => {
     projectSideUl.appendChild(projectSidebar);
     projectList[i].add = true;
     projectPage(projectSidebar, projectList[i], taskList);
+    document.querySelector(".contentTitle").innerHTML = projectName;
+    openForm.classList.remove("hidden");
+    tableContainer.classList.remove("hidden");
+    projectFormContainer.classList.add("hidden");
+    resetSort(tasks);
+    displayTask(tasks);
+    for (let i in tasks) {
+      isDone(tasks[i], i);
+      if (tasks[i].project !== contentTitle.innerHTML) {
+        document.querySelector(`#checkLabel${i}`).remove();
+        document.querySelector(`#taskNameDisplay${i}`).remove();
+        document.querySelector(`#taskNoteDisplay${i}`).remove();
+        document.querySelector(`#taskDateDisplay${i}`).remove();
+        document.querySelector(`#removeBtn${i}`).remove();
+        tasks[i].add = false;
+      }
+      tasks[i].sort = true;
+    }
   }
 };
 // Project Constructor, eventlistener for submit and pushing to project array
 const projects = () => {
   createDefaultProject();
-  const submitProjectBtn = document.querySelector(".submitProjectBtn");
-  const closeProjectBtn = document.querySelector(".closeProjectBtn");
-  const projectName = document.querySelector(".projectName");
-  const projectNote = document.querySelector(".projectNote");
-  const projectDate = document.querySelector(".projectDate");
 
   function Project(projectName, projectNote, projectDate) {
     this.projectName = projectName;
@@ -66,7 +85,7 @@ const projects = () => {
     projectNote.value = "";
     projectDate.value = "";
     addToProjectArr(projectNameValue, projectNoteValue, projectDateValue);
-    displayProject(projectList);
+    displayProject(projectList, projectNameValue, taskList);
   });
 
   closeProjectBtn.addEventListener("click", function (e) {
@@ -98,6 +117,7 @@ const projects = () => {
     contentTitle.innerHTML = projectName;
   }
 };
+
 // Project Link Functionality
 const projectPage = (btn, project, taskList) => {
   btn.addEventListener("click", function () {
