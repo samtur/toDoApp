@@ -196,6 +196,12 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
+.menuImg:hover,
+.homeImg:hover {
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(50%) contrast(93%);
+}
+
 .navbar {
   display: flex;
   gap: 0.7rem;
@@ -212,11 +218,11 @@ input[type="checkbox"]:hover {
 
 /* Sidebar */
 .sideIcon {
-  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
-    brightness(89%) contrast(93%);
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(89%) contrast(93%);
 }
 
 .linklist {
@@ -232,6 +238,15 @@ input[type="checkbox"]:hover {
   gap: 0.5rem;
   justify-content: flex-start;
   cursor: pointer;
+}
+
+.links:hover {
+  font-family: "RobotoThin";
+}
+
+.sideIcon:hover {
+  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
+    brightness(100%) contrast(93%);
 }
 
 .sidebar {
@@ -464,8 +479,21 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: default;
 }
 
+.projectSideUl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.projectSide {
+  font-size: 1.2rem;
+  font-family: "RobotoThin";
+  width: fit-content;
+}
+
 .projectSide:hover {
   cursor: pointer;
+  font-family: "RobotoLight";
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
