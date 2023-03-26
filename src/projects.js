@@ -64,7 +64,6 @@ const displayProject = (projectList, projectName, tasks) => {
 // Project Constructor, eventlistener for submit and pushing to project array
 const projects = () => {
   createDefaultProject();
-
   function Project(projectName, projectNote, projectDate) {
     this.projectName = projectName;
     this.projectNote = projectNote;

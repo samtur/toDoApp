@@ -3,7 +3,6 @@ const appFunc = () => {
   const addBtn = document.querySelector(".openForm");
   const closeBtn = document.querySelector(".closeBtn");
   const formContainer = document.querySelector(".taskFormContainer");
-  const submitBtn = document.querySelector(".submitBtn");
   const menuBtn = document.querySelector(".menuBtn");
   const sideBar = document.querySelector(".sidebar");
   const content = document.querySelector(".content");

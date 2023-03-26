@@ -1,10 +1,15 @@
 import { checkOff, removeTask } from "./app";
+import { saveTasks, getTasks } from "./taskData";
 import Icon from "./delete.svg";
 
 const taskTable = document.querySelector(".taskTable");
 
 const displayTask = (taskList) => {
   for (let i in taskList) {
+    taskList[i].add = false;
+  }
+  for (let i in taskList) {
+    console.log(taskList[i]);
     if (taskList[i].add === true) {
       continue;
     }

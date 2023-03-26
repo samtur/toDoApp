@@ -240,7 +240,11 @@ input[type="checkbox"]:hover {
   cursor: pointer;
 }
 
-.links:hover {
+#link0:hover,
+#link1:hover,
+#link2:hover,
+#link3:hover,
+#link5:hover {
   font-family: "RobotoThin";
 }
 
@@ -370,6 +374,14 @@ li {
   padding: 0.3rem 0.5rem 0.3rem 0.2rem;
   width: 8rem;
   border: solid 1px var(--lightest);
+}
+
+.submitBtn:hover,
+.closeBtn:hover,
+.openForm:hover,
+.submitProjectBtn:hover,
+.closeProjectBtn:hover {
+  font-family: "RobotoThin";
 }
 
 .checkLabel {
@@ -509,20 +521,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 ::placeholder {
   color: var(--lightest);
   font-size: 1.2rem;
-}
-
-.removeBtn {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-}
-
-.removeIcon {
-  cursor: pointer;
-  filter: invert(95%) sepia(6%) saturate(1238%) hue-rotate(319deg)
-    brightness(89%) contrast(93%);
-  width: 1.5rem;
-  height: 1.5rem;
 }
 
 /* Footer */

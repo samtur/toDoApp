@@ -8,10 +8,14 @@ import {
   inboxListener,
   weekListener,
   completeListener,
+  getTasks,
+  saveTasks,
 } from "./taskData";
 import { addProject, projects } from "./projects";
+import { displayTask } from "./dom";
 
 // domFunc();
+getTasks(taskList);
 resetSort(taskList);
 todayListener(taskList);
 inboxListener(taskList);
@@ -21,3 +25,5 @@ addProject();
 appFunc();
 taskData();
 projects();
+// Clear local storage
+// localStorage.clear();

@@ -1,9 +1,29 @@
 import { displayTask } from "./dom";
 import { isDone } from "./app";
-const taskList = [];
+let taskList = "";
 const tableContainer = document.querySelector(".tableContainer");
 const projectFormContainer = document.querySelector(".projectFormContainer");
 const contentTitle = document.querySelector(".contentTitle");
+const weekBtn = document.querySelector("#link2");
+const openFormBtn = document.querySelector(".openForm");
+const taskFormContainer = document.querySelector(".taskFormContainer");
+const todayBtn = document.querySelector("#link1");
+const completeBtn = document.querySelector("#link3");
+const inboxBtn = document.querySelector("#link0");
+const homeBtn = document.querySelector(".homeBtn");
+
+const saveTasks = (taskList) => {
+  const jsonTaskList = JSON.stringify(taskList);
+  localStorage.setItem("tasks", jsonTaskList);
+};
+
+const getTasks = (taskList) => {
+  if (localStorage.tasks) {
+    const tasksFromStorage = localStorage.getItem("tasks");
+    taskList = JSON.parse(tasksFromStorage);
+    displayTask(taskList);
+  }
+};
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -50,6 +70,7 @@ const taskData = () => {
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
     let toDo = new Task(taskNameValue, taskNoteValue, taskDateValue);
     taskList.push(toDo);
+    saveTasks(taskList);
   }
 };
 
@@ -62,9 +83,6 @@ const resetSort = (taskList) => {
 };
 
 const todayListener = (taskList) => {
-  const todayBtn = document.querySelector("#link1");
-  const openFormBtn = document.querySelector(".openForm");
-  const taskFormContainer = document.querySelector(".taskFormContainer");
   todayBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "Today";
     projectFormContainer.classList.add("hidden");
@@ -93,9 +111,6 @@ const todayListener = (taskList) => {
 };
 
 const weekListener = (taskList) => {
-  const weekBtn = document.querySelector("#link2");
-  const openFormBtn = document.querySelector(".openForm");
-  const taskFormContainer = document.querySelector(".taskFormContainer");
   weekBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "This Week";
     projectFormContainer.classList.add("hidden");
@@ -130,9 +145,6 @@ const weekListener = (taskList) => {
 };
 
 const completeListener = (taskList) => {
-  const completeBtn = document.querySelector("#link3");
-  const openFormBtn = document.querySelector(".openForm");
-  const taskFormContainer = document.querySelector(".taskFormContainer");
   completeBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "Completed";
     projectFormContainer.classList.add("hidden");
@@ -157,9 +169,6 @@ const completeListener = (taskList) => {
 };
 
 const inboxListener = (taskList) => {
-  const inboxBtn = document.querySelector("#link0");
-  const homeBtn = document.querySelector(".homeBtn");
-  const openFormBtn = document.querySelector(".openForm");
   inboxBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "All Tasks";
     projectFormContainer.classList.add("hidden");
@@ -198,5 +207,7 @@ export {
   weekListener,
   completeListener,
   isDone,
+  saveTasks,
+  getTasks,
 };
 export { taskList };
