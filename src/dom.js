@@ -1,15 +1,18 @@
 import { checkOff, removeTask } from "./app";
-import { saveTasks, getTasks } from "./taskData";
+import { updateTaskStorage } from "./taskData";
 import Icon from "./delete.svg";
+
+Storage.prototype.setObj = function (key, obj) {
+  return this.setItem(key, JSON.stringify(obj));
+};
+Storage.prototype.getObj = function (key) {
+  return JSON.parse(this.getItem(key));
+};
 
 const taskTable = document.querySelector(".taskTable");
 
 const displayTask = (taskList) => {
   for (let i in taskList) {
-    taskList[i].add = false;
-  }
-  for (let i in taskList) {
-    console.log(taskList[i]);
     if (taskList[i].add === true) {
       continue;
     }
@@ -56,6 +59,8 @@ const displayTask = (taskList) => {
     removeTask(removeIcon, taskList[i], i, taskList);
     taskList[i].add = true;
   }
+  localStorage.setObj("tasks", taskList);
+  taskList = localStorage.getObj("tasks");
 };
 
 export { displayTask };

@@ -46,7 +46,7 @@ const displayProject = (projectList, projectName, tasks) => {
     tableContainer.classList.remove("hidden");
     projectFormContainer.classList.add("hidden");
     resetSort(tasks);
-    displayTask(tasks);
+    // displayTask(tasks);
     for (let i in tasks) {
       isDone(tasks[i], i);
       if (tasks[i].project !== contentTitle.innerHTML) {
@@ -126,7 +126,7 @@ const projectPage = (btn, project, taskList) => {
     document.querySelector(".projectFormContainer").classList.add("hidden");
     document.querySelector(".tableContainer").classList.remove("hidden");
     resetSort(taskList);
-    displayTask(taskList);
+    // displayTask(taskList);
     for (let i in taskList) {
       isDone(taskList[i], i);
       if (taskList[i].project !== contentTitle.innerHTML) {

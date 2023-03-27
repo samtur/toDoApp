@@ -1,3 +1,6 @@
+// Clear local storage
+// localStorage.clear();
+
 import "./style.css";
 import { appFunc } from "./app";
 import {
@@ -8,14 +11,13 @@ import {
   inboxListener,
   weekListener,
   completeListener,
-  getTasks,
-  saveTasks,
+  defaultTaskStorage,
 } from "./taskData";
 import { addProject, projects } from "./projects";
 import { displayTask } from "./dom";
 
+defaultTaskStorage();
 // domFunc();
-getTasks(taskList);
 resetSort(taskList);
 todayListener(taskList);
 inboxListener(taskList);
@@ -25,5 +27,5 @@ addProject();
 appFunc();
 taskData();
 projects();
-// Clear local storage
-// localStorage.clear();
+
+console.log(localStorage);

@@ -1,3 +1,6 @@
+import { taskList } from "./taskData";
+import { updateTaskStorage } from "./taskData";
+
 // App Functionality
 const appFunc = () => {
   const addBtn = document.querySelector(".openForm");
@@ -66,6 +69,8 @@ const removeTask = (btn, taskInd, indNum, list) => {
     if (index !== -1) {
       list.splice(index, 1);
     }
+    // saveTasks(list);
+    // getTasks(list);
     document.querySelector(`#checkLabel${indNum}`).remove();
     document.querySelector(`#taskNameDisplay${indNum}`).remove();
     document.querySelector(`#taskNoteDisplay${indNum}`).remove();

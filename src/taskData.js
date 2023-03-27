@@ -1,6 +1,7 @@
 import { displayTask } from "./dom";
 import { isDone } from "./app";
-let taskList = "";
+
+let taskList = [];
 const tableContainer = document.querySelector(".tableContainer");
 const projectFormContainer = document.querySelector(".projectFormContainer");
 const contentTitle = document.querySelector(".contentTitle");
@@ -12,18 +13,46 @@ const completeBtn = document.querySelector("#link3");
 const inboxBtn = document.querySelector("#link0");
 const homeBtn = document.querySelector(".homeBtn");
 
-const saveTasks = (taskList) => {
-  const jsonTaskList = JSON.stringify(taskList);
-  localStorage.setItem("tasks", jsonTaskList);
+// NOT SURE IF THESE WORK
+Storage.prototype.setObj = function (key, obj) {
+  return this.setItem(key, JSON.stringify(obj));
+};
+Storage.prototype.getObj = function (key) {
+  return JSON.parse(this.getItem(key));
 };
 
-const getTasks = (taskList) => {
-  if (localStorage.tasks) {
-    const tasksFromStorage = localStorage.getItem("tasks");
-    taskList = JSON.parse(tasksFromStorage);
-    displayTask(taskList);
+// NEED A DEFAULT FUNCTION WHEN YOU OPEN PAGE
+const defaultTaskStorage = () => {
+  if (localStorage.getItem("tasks") !== null) {
+    taskList = localStorage.getItem("tasks");
+    console.log(typeof taskList);
+  } else {
+    taskList = [];
   }
+  return taskList;
 };
+
+// DON'T KNOW IF I NEED THIS
+// const defaultTaskStorage = (taskList) => {
+//   localStorage.setObj("tasks", taskList);
+//   // if (localStorage.getItem("tasks") === null) {
+//   //   taskList = [];
+//   //   const jsonTaskList = JSON.stringify(taskList);
+//   //   localStorage.setItem("tasks", jsonTaskList);
+//   // } else {
+//   //   const tasksFromStorage = localStorage.getItem("tasks");
+//   //   taskList = JSON.parse(tasksFromStorage);
+//   // }
+// };
+
+// const updateTaskStorage = (taskList) => {
+//   localStorage.setObj("tasks", taskList);
+//   taskList = localStorage.getObj("tasks");
+//   // const jsonTaskList = JSON.stringify(taskList);
+//   // localStorage.setItem("tasks", jsonTaskList);
+//   // const tasksFromStorage = localStorage.getItem("tasks");
+//   // taskList = JSON.parse(tasksFromStorage);
+// };
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -70,7 +99,8 @@ const taskData = () => {
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
     let toDo = new Task(taskNameValue, taskNoteValue, taskDateValue);
     taskList.push(toDo);
-    saveTasks(taskList);
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   }
 };
 
@@ -207,7 +237,6 @@ export {
   weekListener,
   completeListener,
   isDone,
-  saveTasks,
-  getTasks,
+  defaultTaskStorage,
 };
 export { taskList };
