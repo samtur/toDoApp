@@ -6,26 +6,22 @@ import { appFunc } from "./app";
 import {
   taskData,
   taskList,
-  resetSort,
   todayListener,
   inboxListener,
   weekListener,
   completeListener,
   defaultTaskStorage,
+  resetSort,
 } from "./taskData";
 import { addProject, projects } from "./projects";
-import { displayTask } from "./dom";
 
 defaultTaskStorage();
-// domFunc();
-resetSort(taskList);
 todayListener(taskList);
 inboxListener(taskList);
 weekListener(taskList);
 completeListener(taskList);
+resetSort(taskList);
 addProject();
 appFunc();
 taskData();
 projects();
-
-console.log(localStorage);

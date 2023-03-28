@@ -13,7 +13,7 @@ const completeBtn = document.querySelector("#link3");
 const inboxBtn = document.querySelector("#link0");
 const homeBtn = document.querySelector(".homeBtn");
 
-// NOT SURE IF THESE WORK
+// Functions to retreive and store arrays/objs local storage
 Storage.prototype.setObj = function (key, obj) {
   return this.setItem(key, JSON.stringify(obj));
 };
@@ -21,38 +21,17 @@ Storage.prototype.getObj = function (key) {
   return JSON.parse(this.getItem(key));
 };
 
-// NEED A DEFAULT FUNCTION WHEN YOU OPEN PAGE
+// Checks local storage upon opening app
 const defaultTaskStorage = () => {
-  if (localStorage.getItem("tasks") !== null) {
-    taskList = localStorage.getItem("tasks");
-    console.log(typeof taskList);
+  if (localStorage.getItem("tasks") === null) {
+    localStorage.setObj("tasks", taskList);
+    console.log(localStorage);
   } else {
-    taskList = [];
+    taskList = localStorage.getObj("tasks");
+    console.log(taskList);
+    displayTask(taskList);
   }
-  return taskList;
 };
-
-// DON'T KNOW IF I NEED THIS
-// const defaultTaskStorage = (taskList) => {
-//   localStorage.setObj("tasks", taskList);
-//   // if (localStorage.getItem("tasks") === null) {
-//   //   taskList = [];
-//   //   const jsonTaskList = JSON.stringify(taskList);
-//   //   localStorage.setItem("tasks", jsonTaskList);
-//   // } else {
-//   //   const tasksFromStorage = localStorage.getItem("tasks");
-//   //   taskList = JSON.parse(tasksFromStorage);
-//   // }
-// };
-
-// const updateTaskStorage = (taskList) => {
-//   localStorage.setObj("tasks", taskList);
-//   taskList = localStorage.getObj("tasks");
-//   // const jsonTaskList = JSON.stringify(taskList);
-//   // localStorage.setItem("tasks", jsonTaskList);
-//   // const tasksFromStorage = localStorage.getItem("tasks");
-//   // taskList = JSON.parse(tasksFromStorage);
-// };
 
 const taskData = () => {
   const submit = document.querySelector(".submitBtn");
@@ -100,7 +79,6 @@ const taskData = () => {
     let toDo = new Task(taskNameValue, taskNoteValue, taskDateValue);
     taskList.push(toDo);
     localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
   }
 };
 
@@ -137,9 +115,14 @@ const todayListener = (taskList) => {
         taskList[i].sort = true;
       }
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 
+// CHNAGE THIS WEEK TO THIS MONTH!
+// CHECK MONTH IS THE SAME IN DATE AND TIME DISPLAY
+// UPDATE TABLE
 const weekListener = (taskList) => {
   weekBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "This Week";
@@ -158,9 +141,12 @@ const weekListener = (taskList) => {
       isDone(taskList[i], i);
       if (taskList[i].sort === false) {
         let taskDate = document.querySelector(`#taskDateDisplay${i}`);
-        taskDate = taskDate.innerHTML;
+        taskDate = taskList[i].taskDate;
         taskDate = Number(taskDate.slice(-2));
+        console.log(taskDate);
         if (taskDate > lastday || taskDate < firstday) {
+          console.log(taskList[i]);
+          console.log(firstday, lastday);
           document.querySelector(`#checkLabel${i}`).remove();
           document.querySelector(`#taskNameDisplay${i}`).remove();
           document.querySelector(`#taskNoteDisplay${i}`).remove();
@@ -171,6 +157,8 @@ const weekListener = (taskList) => {
         taskList[i].sort = true;
       }
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 
@@ -195,6 +183,8 @@ const completeListener = (taskList) => {
       }
       taskList[i].sort = true;
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 
@@ -212,6 +202,8 @@ const inboxListener = (taskList) => {
       }
       taskList[i].sort = true;
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
   homeBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "All Tasks";
@@ -226,6 +218,8 @@ const inboxListener = (taskList) => {
       isDone(taskList[i], i);
       taskList[i].sort = true;
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 
