@@ -56,7 +56,7 @@ const displayTask = (taskList) => {
       taskNoteDisplay,
       taskDateDisplay
     );
-    removeTask(removeIcon, taskList[i], i, taskList);
+    removeTask(removeIcon, taskList[i], i);
     taskList[i].add = true;
   }
   for (let i in taskList) {

@@ -1,5 +1,11 @@
 import { taskList } from "./taskData";
-import { updateTaskStorage } from "./taskData";
+
+Storage.prototype.setObj = function (key, obj) {
+  return this.setItem(key, JSON.stringify(obj));
+};
+Storage.prototype.getObj = function (key) {
+  return JSON.parse(this.getItem(key));
+};
 
 // App Functionality
 const appFunc = () => {
@@ -63,19 +69,19 @@ const isDone = (task, index) => {
   }
 };
 
-const removeTask = (btn, taskInd, indNum, list) => {
+const removeTask = (btn, taskInd, indNum) => {
   btn.addEventListener("click", function () {
-    let index = list.indexOf(taskInd);
+    let index = taskList.indexOf(taskInd);
     if (index !== -1) {
-      list.splice(index, 1);
+      taskList.splice(index, 1);
     }
-    // saveTasks(list);
-    // getTasks(list);
     document.querySelector(`#checkLabel${indNum}`).remove();
     document.querySelector(`#taskNameDisplay${indNum}`).remove();
     document.querySelector(`#taskNoteDisplay${indNum}`).remove();
     document.querySelector(`#taskDateDisplay${indNum}`).remove();
     document.querySelector(`#removeBtn${indNum}`).remove();
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 

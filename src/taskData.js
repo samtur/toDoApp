@@ -5,7 +5,7 @@ let taskList = [];
 const tableContainer = document.querySelector(".tableContainer");
 const projectFormContainer = document.querySelector(".projectFormContainer");
 const contentTitle = document.querySelector(".contentTitle");
-const weekBtn = document.querySelector("#link2");
+const monthBtn = document.querySelector("#link2");
 const openFormBtn = document.querySelector(".openForm");
 const taskFormContainer = document.querySelector(".taskFormContainer");
 const todayBtn = document.querySelector("#link1");
@@ -120,21 +120,14 @@ const todayListener = (taskList) => {
   });
 };
 
-// CHNAGE THIS WEEK TO THIS MONTH!
-// CHECK MONTH IS THE SAME IN DATE AND TIME DISPLAY
-// UPDATE TABLE
-const weekListener = (taskList) => {
-  weekBtn.addEventListener("click", function () {
-    contentTitle.innerHTML = "This Week";
+const monthListener = (taskList) => {
+  monthBtn.addEventListener("click", function () {
+    contentTitle.innerHTML = "This Month";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
     taskFormContainer.classList.add("hidden");
-    const currentDate = new Date();
-    const first = currentDate.getDate() - currentDate.getDay() + 1;
-    const last = first + 6;
-    const firstday = new Date(currentDate.setDate(first)).getDate();
-    const lastday = new Date(currentDate.setDate(last)).getDate();
+    const currentMonth = new Date().toJSON().slice(5, 7);
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
@@ -142,11 +135,8 @@ const weekListener = (taskList) => {
       if (taskList[i].sort === false) {
         let taskDate = document.querySelector(`#taskDateDisplay${i}`);
         taskDate = taskList[i].taskDate;
-        taskDate = Number(taskDate.slice(-2));
-        console.log(taskDate);
-        if (taskDate > lastday || taskDate < firstday) {
-          console.log(taskList[i]);
-          console.log(firstday, lastday);
+        taskDate = taskDate.slice(5, 7);
+        if (taskDate != currentMonth) {
           document.querySelector(`#checkLabel${i}`).remove();
           document.querySelector(`#taskNameDisplay${i}`).remove();
           document.querySelector(`#taskNoteDisplay${i}`).remove();
@@ -228,7 +218,7 @@ export {
   todayListener,
   inboxListener,
   resetSort,
-  weekListener,
+  monthListener,
   completeListener,
   isDone,
   defaultTaskStorage,
