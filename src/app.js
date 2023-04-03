@@ -52,6 +52,8 @@ const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
       noteDis.classList.remove("thin");
       dateDis.classList.remove("thin");
     }
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
   });
 };
 

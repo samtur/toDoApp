@@ -1,4 +1,4 @@
-import { checkOff, removeTask } from "./app";
+import { checkOff, removeTask, isDone } from "./app";
 import Icon from "./delete.svg";
 
 Storage.prototype.setObj = function (key, obj) {
@@ -49,6 +49,7 @@ const displayTask = (taskList) => {
     taskTable.appendChild(taskNoteDisplay);
     taskTable.appendChild(taskDateDisplay);
     taskTable.appendChild(removeBtn);
+    isDone(taskList[i], i);
     checkOff(
       checkBox,
       taskList[i],

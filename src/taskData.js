@@ -25,10 +25,8 @@ Storage.prototype.getObj = function (key) {
 const defaultTaskStorage = () => {
   if (localStorage.getItem("tasks") === null) {
     localStorage.setObj("tasks", taskList);
-    console.log(localStorage);
   } else {
     taskList = localStorage.getObj("tasks");
-    console.log(taskList);
     displayTask(taskList);
   }
 };
@@ -78,7 +76,6 @@ const taskData = () => {
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
     let toDo = new Task(taskNameValue, taskNoteValue, taskDateValue);
     taskList.push(toDo);
-    localStorage.setObj("tasks", taskList);
   }
 };
 
