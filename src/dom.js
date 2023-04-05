@@ -1,4 +1,5 @@
 import { checkOff, removeTask, isDone } from "./app";
+import { taskList } from "./taskData";
 import Icon from "./delete.svg";
 
 Storage.prototype.setObj = function (key, obj) {
@@ -10,7 +11,8 @@ Storage.prototype.getObj = function (key) {
 
 const taskTable = document.querySelector(".taskTable");
 
-const displayTask = (taskList) => {
+const displayTask = () => {
+  console.log(taskList);
   document.querySelector(".taskTable").innerHTML = "";
   for (let i in taskList) {
     if (taskList[i].add === true) {

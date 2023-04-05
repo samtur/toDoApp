@@ -59,6 +59,9 @@ const taskData = () => {
     taskNote.value = "";
     taskDate.value = "";
     addToTaskList(taskNameValue, taskNoteValue, taskDateValue);
+    localStorage.setObj("tasks", taskList);
+    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
       if (taskList[i].project !== contentTitle.innerHTML) {
@@ -71,6 +74,7 @@ const taskData = () => {
       }
       taskList[i].sort = true;
     }
+    resetSort(taskList);
   });
 
   function addToTaskList(taskNameValue, taskNoteValue, taskDateValue) {
@@ -79,15 +83,18 @@ const taskData = () => {
   }
 };
 
-const resetSort = (taskList) => {
+const resetSort = () => {
+  console.log(taskList);
   for (let i in taskList) {
     if (taskList[i].sort === true) {
       taskList[i].sort = false;
     }
   }
+  localStorage.setObj("tasks", taskList);
+  taskList = localStorage.getObj("tasks");
 };
 
-const todayListener = (taskList) => {
+const todayListener = () => {
   todayBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "Today";
     projectFormContainer.classList.add("hidden");
@@ -112,12 +119,11 @@ const todayListener = (taskList) => {
         taskList[i].sort = true;
       }
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
   });
 };
 
-const monthListener = (taskList) => {
+const monthListener = () => {
   monthBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "This Month";
     projectFormContainer.classList.add("hidden");
@@ -144,12 +150,11 @@ const monthListener = (taskList) => {
         taskList[i].sort = true;
       }
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
   });
 };
 
-const completeListener = (taskList) => {
+const completeListener = () => {
   completeBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "Completed";
     projectFormContainer.classList.add("hidden");
@@ -170,17 +175,17 @@ const completeListener = (taskList) => {
       }
       taskList[i].sort = true;
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
   });
 };
 
-const inboxListener = (taskList) => {
+const inboxListener = () => {
   inboxBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "All Tasks";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
+    taskFormContainer.classList.add("hidden");
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
@@ -189,14 +194,14 @@ const inboxListener = (taskList) => {
       }
       taskList[i].sort = true;
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
   });
   homeBtn.addEventListener("click", function () {
     contentTitle.innerHTML = "All Tasks";
     projectFormContainer.classList.add("hidden");
     tableContainer.classList.remove("hidden");
     openFormBtn.classList.add("hidden");
+    taskFormContainer.classList.add("hidden");
     resetSort(taskList);
     displayTask(taskList);
     for (let i in taskList) {
@@ -205,8 +210,7 @@ const inboxListener = (taskList) => {
       isDone(taskList[i], i);
       taskList[i].sort = true;
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
+    resetSort(taskList);
   });
 };
 
