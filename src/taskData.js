@@ -4,7 +4,7 @@ import { isDone } from "./app";
 let taskList = [];
 const tableContainer = document.querySelector(".tableContainer");
 const projectFormContainer = document.querySelector(".projectFormContainer");
-const contentTitle = document.querySelector(".contentTitle");
+let contentTitle = document.querySelector(".contentTitle");
 const monthBtn = document.querySelector("#link2");
 const openFormBtn = document.querySelector(".openForm");
 const taskFormContainer = document.querySelector(".taskFormContainer");
@@ -48,6 +48,7 @@ const taskData = () => {
   }
 
   submit.addEventListener("click", function (e) {
+    contentTitle = document.querySelector(".contentTitle");
     e.preventDefault();
     if (taskName.value === "" || taskDate.value === "") {
       return;
@@ -84,7 +85,6 @@ const taskData = () => {
 };
 
 const resetSort = () => {
-  console.log(taskList);
   for (let i in taskList) {
     if (taskList[i].sort === true) {
       taskList[i].sort = false;

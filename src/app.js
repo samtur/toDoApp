@@ -37,23 +37,27 @@ const appFunc = () => {
   });
 };
 // Task Functionality
-const checkOff = (btn, taskInd, nameDis, noteDis, dateDis) => {
+const checkOff = (btn, taskInd, nameDis, noteDis, dateDis, tasks) => {
   btn.addEventListener("click", function () {
     if (taskInd.done === false) {
       taskInd.done = true;
+      localStorage.setObj("tasks", tasks);
+      tasks = localStorage.getObj("tasks");
+      taskList = tasks;
       nameDis.classList.add("crossout");
       nameDis.classList.add("thin");
       noteDis.classList.add("thin");
       dateDis.classList.add("thin");
     } else {
       taskInd.done = false;
+      localStorage.setObj("tasks", tasks);
+      tasks = localStorage.getObj("tasks");
+      taskList = tasks;
       nameDis.classList.remove("crossout");
       nameDis.classList.remove("thin");
       noteDis.classList.remove("thin");
       dateDis.classList.remove("thin");
     }
-    localStorage.setObj("tasks", taskList);
-    taskList = localStorage.getObj("tasks");
   });
 };
 
@@ -71,12 +75,11 @@ const isDone = (task, index) => {
   }
 };
 
-const removeTask = (btn, taskInd, indNum) => {
+const removeTask = (btn, indNum) => {
   btn.addEventListener("click", function () {
-    let index = taskList.indexOf(taskInd);
-    if (index !== -1) {
-      taskList.splice(index, 1);
-    }
+    let index = indNum;
+    taskList.splice(index, 1);
+    console.log(taskList);
     document.querySelector(`#checkLabel${indNum}`).remove();
     document.querySelector(`#taskNameDisplay${indNum}`).remove();
     document.querySelector(`#taskNoteDisplay${indNum}`).remove();

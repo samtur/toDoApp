@@ -1,5 +1,5 @@
 // Clear local storage
-// localStorage.clear();
+localStorage.clear();
 
 import "./style.css";
 import { appFunc } from "./app";

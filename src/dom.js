@@ -12,7 +12,6 @@ Storage.prototype.getObj = function (key) {
 const taskTable = document.querySelector(".taskTable");
 
 const displayTask = () => {
-  console.log(taskList);
   document.querySelector(".taskTable").innerHTML = "";
   for (let i in taskList) {
     if (taskList[i].add === true) {
@@ -57,9 +56,10 @@ const displayTask = () => {
       taskList[i],
       taskNameDisplay,
       taskNoteDisplay,
-      taskDateDisplay
+      taskDateDisplay,
+      taskList
     );
-    removeTask(removeIcon, taskList[i], i);
+    removeTask(removeIcon, i);
     taskList[i].add = true;
   }
   for (let i in taskList) {

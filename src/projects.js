@@ -126,7 +126,6 @@ const projects = () => {
     projectList.push(project);
     localStorage.setObj("projects", projectList);
     projectList = localStorage.getObj("projects");
-    console.log(localStorage.getObj("projects"));
   }
 
   function createDefaultProject() {
@@ -195,7 +194,7 @@ const projects = () => {
 };
 
 // Project Link Functionality
-const projectPage = (btn, project, taskList) => {
+const projectPage = (btn, project) => {
   btn.addEventListener("click", function () {
     document.querySelector(".contentTitle").innerHTML = project.projectName;
     document.querySelector(".openForm").classList.remove("hidden");
